@@ -1,5 +1,4 @@
 import { BrowserRouter as BRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 

@@ -3,6 +3,10 @@ import { defaultAuth } from "../fbBase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+  signInWithPopup,
 } from "firebase/auth";
 
 export default function Auth() {
@@ -30,6 +34,30 @@ export default function Auth() {
       }
     } catch (e: any) {
       alert(" create user with email/pswd error: " + e.code + " " + e.message);
+    } finally {
+      setEmail("");
+      setPassword("");
+    }
+  };
+
+  const onToggle = () => {
+    setNewAccount((prev) => !prev);
+  };
+
+  const onSocialClick = async (e: any) => {
+    const {
+      target: { name },
+    } = e;
+
+    if (name === "google") {
+      let provider = new GoogleAuthProvider();
+      provider.addScope("profile");
+      provider.addScope("email");
+      try {
+        const result = await signInWithPopup(defaultAuth, provider);
+      } catch (e: any) {
+        alert("google sign in error" + e);
+      }
     }
   };
 
@@ -54,8 +82,13 @@ export default function Auth() {
         />
         <input type="submit" value={newAccount ? "Create Account" : "Log In"} />
       </form>
+      <span onClick={onToggle}>
+        {newAccount ? "toggle to Sign In" : "toggle to Create New Account"}
+      </span>
       <div>
-        <button> Continue with Google </button>
+        <button name="google" onClick={onSocialClick}>
+          Continue with Google
+        </button>
       </div>
     </div>
   );
