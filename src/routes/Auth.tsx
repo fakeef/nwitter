@@ -4,8 +4,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
   signInWithPopup,
 } from "firebase/auth";
 
@@ -54,7 +52,7 @@ export default function Auth() {
       provider.addScope("profile");
       provider.addScope("email");
       try {
-        const result = await signInWithPopup(defaultAuth, provider);
+        await signInWithPopup(defaultAuth, provider);
       } catch (e: any) {
         alert("google sign in error" + e);
       }
