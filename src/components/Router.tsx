@@ -3,8 +3,11 @@ import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 import Navigation from "./Navigation";
+import { useState } from "react";
 
 export default function Router({ isLoggedIn }: { isLoggedIn: boolean }) {
+  const [isNameChanged, setIsNameChanged] = useState(false);
+
   return (
     <BRouter>
       {isLoggedIn && <Navigation />}
@@ -14,7 +17,10 @@ export default function Router({ isLoggedIn }: { isLoggedIn: boolean }) {
         ) : (
           <Route path="/" element={<Auth />} />
         )}
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={<Profile setIsNameChanged={setIsNameChanged} />}
+        />
       </Routes>
     </BRouter>
   );

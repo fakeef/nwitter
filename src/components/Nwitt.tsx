@@ -1,5 +1,5 @@
 import { deleteDoc, getDoc, updateDoc } from "firebase/firestore";
-import { getDownloadURL, ref } from "firebase/storage";
+import { getDownloadURL, ref, deleteObject } from "firebase/storage";
 import { storage } from "../fbBase";
 import { useState } from "react";
 import { TypeNwitt } from "../routes/Home";
@@ -12,6 +12,9 @@ export default function Nwitt({ nwitObj, isOwner, docRef }: any) {
     const isOk = window.confirm("Are you sure to delete the nwit?");
     if (isOk) {
       try {
+        if (nwitObj.imgPath !== null) {
+          await deleteObject(ref(storage, nwitObj.imgPath));
+        }
         const docSnap = await getDoc(docRef);
         await deleteDoc(docSnap.ref);
       } catch (e: any) {
@@ -33,9 +36,11 @@ export default function Nwitt({ nwitObj, isOwner, docRef }: any) {
   const onEditUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      // 사진도 업데이트??
+      // 사진 업로드 관련 사항은 Home에 있는데.. 기능을 분리해야 할듯
+      // <input file... onFileChange ... update는 여기도 있고 home(최초 업로드)에도 있고
       const newNwitt: TypeNwitt = { ...nwitObj, nwitt: editText };
       await updateDoc(docRef, newNwitt);
-      // await updateDoc(docRef, "nwitt", editText);
     } catch (e) {
       alert(e);
     }
@@ -46,6 +51,7 @@ export default function Nwitt({ nwitObj, isOwner, docRef }: any) {
     setEditText(e.target.value);
   };
 
+  // 파일을 가져와서 화면에 표시
   const getFileRef = async () => {
     const url = await getDownloadURL(ref(storage, nwitObj.imgPath));
     const img = document.getElementById("nwittimg");

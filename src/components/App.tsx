@@ -5,11 +5,8 @@ import { defaultAuth } from "../fbBase";
 import { onAuthStateChanged, User } from "firebase/auth";
 
 function App() {
-  const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // let currentUser: User | null = null;
-  // const [currentUser, setCurrentUser] = useState<null | User>(null);
+  const [init, setInit] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const currentUser = useRef<User | null>(null);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -19,8 +16,6 @@ function App() {
         // user is signed in
         setIsLoggedIn(true);
         currentUser.current = user;
-        // currentUser = user;
-        // setUserObj(user);
       } else {
         // user is signed out
         setIsLoggedIn(false);
