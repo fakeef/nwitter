@@ -13,6 +13,7 @@ export type TypeNwitt = {
   nwitt: string;
   userId: string;
   imgPath: string | null;
+  timestamp: string;
 };
 
 export default function Home() {
@@ -24,11 +25,24 @@ export default function Home() {
   useEffect(() => {
     // callback function called when the db is changed.
     onSnapshot(collectionRef, (snapshot) => {
-      const nwitArray = snapshot.docs.map((doc) => ({
+      const nwitArray: TypeNwitt[] = snapshot.docs.map((doc) => ({
         id: doc.id,
+        createAt: "",
+        nwitt: "",
+        userId: "",
+        imgPath: null,
+        timestamp: "",
         ...doc.data(),
       }));
-      setNwitts(nwitArray as TypeNwitt[]);
+      setNwitts(nwitArray);
+
+      nwitArray.sort((a, b) => {
+        if (Number(a.timestamp) <= Number(b.timestamp)) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
     });
   }, []);
 

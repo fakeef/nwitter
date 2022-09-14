@@ -1,9 +1,6 @@
 import { defaultAuth } from "../fbBase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import AuthForm from "../components/AuthForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faKiwiBird } from "@fortawesome/free-solid-svg-icons";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export default function Auth() {
   const onSocialClick = async (e: any) => {
