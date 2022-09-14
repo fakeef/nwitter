@@ -61,13 +61,30 @@ export default function Profile({ setIsNameChanged }: any) {
   };
 
   return (
-    <>
-      <form onSubmit={onSubmit}>
-        <input type="text" value={profileName as string} onChange={onChange} />
-        <input type="submit" value="Change profile name" />
+    <div className="container">
+      <form onSubmit={onSubmit} className="nwitts-container">
+        <input
+          type="text"
+          value={profileName as string}
+          onChange={onChange}
+          autoFocus
+          className="edit-nwitt"
+        />
+        <input
+          type="submit"
+          value="Change profile name"
+          className="update-button"
+        />
       </form>
-      <h1> Welcome {userInfo?.displayName} !! </h1>
-      <h3> Here are you nwitts </h3>
+      <p
+        style={{
+          width: "100%",
+          border: "1px solid white",
+        }}
+      ></p>
+      <button onClick={onLogoutClick} className="cancel-button">
+        Log out
+      </button>
 
       <div>
         {nwitts.map((elem) => (
@@ -81,7 +98,9 @@ export default function Profile({ setIsNameChanged }: any) {
       </div>
       <br />
       <br />
-      <button onClick={onLogoutClick}> Log out </button>
-    </>
+      {/* <button onClick={onLogoutClick} className="cancel-button">
+        Log out
+      </button> */}
+    </div>
   );
 }

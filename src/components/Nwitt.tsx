@@ -3,6 +3,8 @@ import { getDownloadURL, ref, deleteObject } from "firebase/storage";
 import { storage } from "../fbBase";
 import { useState } from "react";
 import { TypeNwitt } from "../routes/Home";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nwitt({ nwitObj, isOwner, docRef }: any) {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -41,8 +43,8 @@ export default function Nwitt({ nwitObj, isOwner, docRef }: any) {
       // <input file... onFileChange ... update는 여기도 있고 home(최초 업로드)에도 있고
       const newNwitt: TypeNwitt = { ...nwitObj, nwitt: editText };
       await updateDoc(docRef, newNwitt);
-    } catch (e) {
-      alert(e);
+    } catch (error) {
+      alert(error);
     }
     setIsEditMode(false);
   };
@@ -60,32 +62,46 @@ export default function Nwitt({ nwitObj, isOwner, docRef }: any) {
   getFileRef();
 
   return (
-    <>
+    <div className="nwitts-container">
       {isEditMode ? (
-        <form onSubmit={onEditUpdate}>
+        <form onSubmit={onEditUpdate} className="nwitts-container">
           <input
             type="text"
+            placeholder="Edit your nwitt"
             onChange={onChange}
             value={editText}
-            maxLength={120}
+            maxLength={80}
+            required
+            autoFocus
+            className="edit-nwitt"
           />
-          <input type="submit" value="Update Nwitt" />
-          <button onClick={onEditCancel}> cancel </button>
+          <input type="submit" value="Update Nwitt" className="update-button" />
+          <button onClick={onEditCancel} className="cancel-button">
+            cancel
+          </button>
         </form>
       ) : (
-        <>
-          <h4> {nwitObj.nwitt} </h4>
+        <div className="nwitt-text-container">
+          <h4 className="nwitt-text"> {nwitObj.nwitt} </h4>
           {nwitObj.imgPath && (
-            <img id="nwittimg" src="" alt="" width={50} height={50} />
+            <img
+              className="nwitt-image"
+              id="nwittimg"
+              src=""
+              alt=""
+              width={50}
+              height={50}
+            />
           )}
+
           {isOwner && (
             <>
-              <button onClick={onDeleteClick}> delete nwitt </button>
-              <button onClick={onEditClick}> edit nwitt </button>
+              <button onClick={onDeleteClick} className="nwitt-delete"></button>
+              <button onClick={onEditClick} className="nwitt-edit"></button>
             </>
           )}
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 }

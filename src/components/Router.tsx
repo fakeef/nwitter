@@ -3,7 +3,7 @@ import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 import Navigation from "./Navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function Router({ isLoggedIn }: { isLoggedIn: boolean }) {
   const [isNameChanged, setIsNameChanged] = useState(false);

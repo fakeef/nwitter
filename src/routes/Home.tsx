@@ -33,10 +33,9 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div className="home-container">
       <NwittFactory />
-
-      <div>
+      <div className="nwitts-container">
         {nwitts.map((elem) => (
           <Nwitt
             key={elem.id}
@@ -46,6 +45,6 @@ export default function Home() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }

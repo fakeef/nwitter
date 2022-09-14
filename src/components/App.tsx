@@ -27,11 +27,11 @@ function App() {
   );
 
   return (
-    <>
+    <div>
       <UserInfoContext.Provider value={currentUser.current}>
         {init ? <Router isLoggedIn={isLoggedIn} /> : "Initialzing..."}
       </UserInfoContext.Provider>
-    </>
+    </div>
   );
 }
 export const UserInfoContext = React.createContext<User | null>(null);

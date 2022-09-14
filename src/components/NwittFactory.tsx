@@ -4,6 +4,8 @@ import { useContext, useState } from "react";
 import { db, storage } from "../fbBase";
 import { v4 as uuidv4 } from "uuid";
 import { UserInfoContext } from "./App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function NwittFactory() {
   const [nwitt, setNwitt] = useState("");
@@ -70,21 +72,36 @@ export default function NwittFactory() {
   };
 
   return (
-    <form onSubmit={onNwittSubmit}>
+    <form onSubmit={onNwittSubmit} className="factory_container">
+      <div className="nwitt-container">
+        <input
+          className="nwitt-input"
+          type="text"
+          onChange={onChange}
+          value={nwitt}
+          placeholder="what's on your mind?"
+          maxLength={80}
+        />
+        <input type="submit" value="&rarr;" className="nwitt-submit" />
+      </div>
+      <label htmlFor="attach-file">
+        <span style={{ color: "white", cursor: "pointer" }}>Add photos</span>
+        <span className="photo-add" />
+      </label>
       <input
-        type="text"
-        onChange={onChange}
-        value={nwitt}
-        placeholder="what's on your mind?"
-        maxLength={120}
+        id="attach-file"
+        type="file"
+        accept="image/*"
+        onChange={onFileChange}
+        style={{ opacity: 0, display: "none" }}
       />
-      <input type="file" accept="image/*" onChange={onFileChange} />
-      <input type="submit" value="Nwitt" />
       {attachment && (
-        <>
+        <div className="factory_container">
           <img src={attachment as string} alt="" width="50px" height="50px" />
-          <button onClick={onClearClick}> Clear Photo </button>
-        </>
+          <button onClick={onClearClick} className="photo-cancel-button">
+            <span className="text-cancel">Cancel</span>
+          </button>
+        </div>
       )}
     </form>
   );
