@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/fakeef/nwitter/static/css/main.ddd14dba.css",
+    "main.js": "/fakeef/nwitter/static/js/main.2b9f4ed2.js",
+    "static/media/fa-solid-900.ttf": "/fakeef/nwitter/static/media/fa-solid-900.b48ad290d0335879a92b.ttf",
+    "static/media/fa-brands-400.ttf": "/fakeef/nwitter/static/media/fa-brands-400.f9ee61fab3c11e2f3ed3.ttf",
+    "static/media/fa-solid-900.woff2": "/fakeef/nwitter/static/media/fa-solid-900.66104b766c3d0462b3c5.woff2",
+    "static/media/fa-brands-400.woff2": "/fakeef/nwitter/static/media/fa-brands-400.e1a247a5ef41e1975742.woff2",
+    "index.html": "/fakeef/nwitter/index.html",
+    "main.ddd14dba.css.map": "/fakeef/nwitter/static/css/main.ddd14dba.css.map",
+    "main.2b9f4ed2.js.map": "/fakeef/nwitter/static/js/main.2b9f4ed2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ddd14dba.css",
+    "static/js/main.2b9f4ed2.js"
+  ]
+}
