@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserInfoContext } from "./App";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faKiwiBird } from "@fortawesome/free-solid-svg-icons";
-import { CollectionReference } from "firebase/firestore";
 
 export default function Navigation({ setIsNameChanged }: any) {
   const userInfo = useContext(UserInfoContext);

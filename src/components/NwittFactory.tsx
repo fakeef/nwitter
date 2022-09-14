@@ -4,8 +4,6 @@ import { useContext, useState } from "react";
 import { db, storage } from "../fbBase";
 import { v4 as uuidv4 } from "uuid";
 import { UserInfoContext } from "./App";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function NwittFactory() {
   const [nwitt, setNwitt] = useState("");
@@ -38,10 +36,13 @@ export default function NwittFactory() {
         createAt: Date(),
         userId: uid,
         imgPath: imgPath,
+        timestamp: Date.now(),
       });
     } catch (error) {
       alert(error);
     }
+    setNwitt("");
+    setAttachment(null);
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

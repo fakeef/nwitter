@@ -102,6 +102,7 @@ body {
 // AuthForm
 .form-input {
     @extend .default-input;
+    color: black;
     border-left: 15px solid $color-theme;
 }
 
@@ -297,7 +298,7 @@ body {
     height:75px;
     font-size: 12px;
     text-align: left;
-    padding: 5px 30px;
+    padding: 5px 50px 5px 20px;
     width: 320px;
     background: white;
     color: black;
@@ -309,7 +310,7 @@ body {
 .nwitt-image {
     position: absolute;
     right: -15px;
-    bottom: -15px;
+    bottom: -30px;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -319,6 +320,7 @@ body {
 .nwitt-del-edi-container {
     position: absolute;
     display: flex;
+    margin-bottom: 50px;
     
 }
 
@@ -326,12 +328,13 @@ body {
     @extend %fa-icon;
     @extend .fa-solid;
     position: absolute;
-    bottom: -10px;
-    right: 50px;
+    position: absolute;
+    top: 3px;
+    right: 0px;
     background-color: transparent;
-    color: $color-theme;
+    color: gray;
     border: none;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
     &:after {
         content: fa-content($fa-var-trash);
@@ -345,12 +348,12 @@ body {
     @extend %fa-icon;
     @extend .fa-solid;
     position: absolute;
-    bottom: -10px;
-    right: 80px;
+    top: 28px;
+    right: 0px;
     border: none;
     background-color: transparent;
-    color: $color-theme;
-    font-size: 20px;
+    color: gray;
+    font-size: 15px;
     cursor: pointer;
     &:after {
         content: fa-content($fa-var-pencil);

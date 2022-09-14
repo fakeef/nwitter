@@ -3,8 +3,6 @@ import { getDownloadURL, ref, deleteObject } from "firebase/storage";
 import { storage } from "../fbBase";
 import { useState } from "react";
 import { TypeNwitt } from "../routes/Home";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nwitt({ nwitObj, isOwner, docRef }: any) {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -54,10 +52,10 @@ export default function Nwitt({ nwitObj, isOwner, docRef }: any) {
   };
 
   // 파일을 가져와서 화면에 표시
+  const [imgurl, setImgurl] = useState("");
   const getFileRef = async () => {
     const url = await getDownloadURL(ref(storage, nwitObj.imgPath));
-    const img = document.getElementById("nwittimg");
-    img?.setAttribute("src", url);
+    setImgurl(url);
   };
   getFileRef();
 
@@ -87,7 +85,7 @@ export default function Nwitt({ nwitObj, isOwner, docRef }: any) {
             <img
               className="nwitt-image"
               id="nwittimg"
-              src=""
+              src={imgurl}
               alt=""
               width={50}
               height={50}

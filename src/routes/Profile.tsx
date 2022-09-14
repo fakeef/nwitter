@@ -54,6 +54,7 @@ export default function Profile({ setIsNameChanged }: any) {
           (await updateProfile(userInfo, { displayName: profileName }));
         setProfileName("");
         setIsNameChanged((prev: boolean) => !prev);
+        navigate("/");
       } catch (error) {
         alert(error);
       }
@@ -96,11 +97,6 @@ export default function Profile({ setIsNameChanged }: any) {
           />
         ))}
       </div>
-      <br />
-      <br />
-      {/* <button onClick={onLogoutClick} className="cancel-button">
-        Log out
-      </button> */}
     </div>
   );
 }
