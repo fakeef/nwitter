@@ -13,12 +13,12 @@ export default function Router({ isLoggedIn }: { isLoggedIn: boolean }) {
       {isLoggedIn && <Navigation />}
       <Routes>
         {isLoggedIn ? (
-          <Route path="/" element={<Home />} />
+          <Route path="/nwitter" element={<Home />} />
         ) : (
-          <Route path="/" element={<Auth />} />
+          <Route path="/nwitter" element={<Auth />} />
         )}
         <Route
-          path="/profile"
+          path="nwitter/profile"
           element={<Profile setIsNameChanged={setIsNameChanged} />}
         />
       </Routes>

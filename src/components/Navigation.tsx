@@ -9,12 +9,12 @@ export default function Navigation({ setIsNameChanged }: any) {
     <nav>
       <ul className="navi-container">
         <li>
-          <Link to="/">
+          <Link to="/nwitter">
             <span className="navi-to-home"></span>
           </Link>
         </li>
         <li>
-          <Link to="/profile" className="navi-profile-container">
+          <Link to="/nwitter/profile" className="navi-profile-container">
             <span className="navi-to-profile"></span>
             <span className="profile-name">
               {userInfo?.displayName

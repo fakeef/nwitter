@@ -83,7 +83,8 @@ export default function NwittFactory() {
           placeholder="what's on your mind?"
           maxLength={80}
         />
-        <input type="submit" value="&rarr;" className="nwitt-submit" />
+        {/* <input type="submit" value="&rarr;" className="nwitt-submit" /> */}
+        <button type="submit" className="nwitt-submit" />
       </div>
       <label htmlFor="attach-file">
         <span style={{ color: "white", cursor: "pointer" }}>Add photos</span>

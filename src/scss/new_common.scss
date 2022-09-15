@@ -175,7 +175,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // border: 2px solid white;
 }
 
 //NwittFactory
@@ -191,36 +190,49 @@ body {
 
 .nwitt-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: unwrap;
-    position: relative;
     margin-bottom: 20px;
     width: 100%;
 }  
 
 .nwitt-input {
     @extend .default-input;
+    margin: 5px 0px;
+    width: 290px;
     background-color: black;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     border: 2px solid $color-theme;
+    border-right: 5px;
+    border-left: 10px solid $color-theme;
 }
 
 .nwitt-submit {
-    position: absolute;
-    top: -1px;
-    right: -10px;
+    @extend %fa-icon;
+    @extend .fa-solid;
     background-color: $color-theme;
+    width: 45px;
     height: 40px;
-    width: 40px;
     text-align: center;
     border-radius: 15px;
-    color: white;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     cursor: pointer;
-    border: 5px solid $color-theme;
 
     &:hover {
-        @extend .button-selected
+        @extend .button-selected;
+        &::after {
+            color: $color-theme;
+        }
     }
+    &::after {
+        content: fa-content($fa-var-share);
+        color: white;
+        font-size: 20px;
+    }
+
   }
 
 .photo-add {
@@ -362,4 +374,5 @@ body {
         color: $color-background-selected;
     }
 }
+
 
