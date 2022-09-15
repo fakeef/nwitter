@@ -35,7 +35,7 @@ export default function Profile({ setIsNameChanged }: any) {
     } catch (e: any) {
       alert("Sign out error " + e);
     } finally {
-      navigate("/");
+      navigate("/nwitter");
     }
   };
 
