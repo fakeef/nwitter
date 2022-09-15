@@ -53,5 +53,5 @@
   "devDependencies": {
     "@types/uuid": "^8.3.4"
   },
-  "homepage": "https://github.com/fakeef/nwitter"
+  "homepage": "https://fakeef.github.io/nwitter"
 }
